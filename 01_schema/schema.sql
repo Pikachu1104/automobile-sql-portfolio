@@ -47,4 +47,29 @@ CREATE TABLE models_master (
     is_active char(1)
 );
 
+--- Dealer Master Table ---
+CREATE TABLE dealer_master (
+    dealer_id INT PRIMARY KEY,
+    dealer_name VARCHAR(100) NOT NULL,
+    city VARCHAR(30) NOT NULL,
+    is_active CHAR(1),
+    created_date DATE NOT NULL,
+    updated_date DATE NOT NULL
+);
 
+
+--- Branch Master Table ---
+CREATE TABLE branch_master (
+    branch_id INT PRIMARY KEY,
+    dealer_id INT NOT NULL,
+    branch_name VARCHAR(100) NOT NULL,
+    branch_address VARCHAR(300) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    branch_type VARCHAR(10) NOT NULL,
+    is_active CHAR(1),
+    created_date DATE NOT NULL,
+    updated_date DATE NOT NULL,
+    CONSTRAINT fk_branch_dealer
+        FOREIGN KEY (dealer_id)
+        REFERENCES dealer_master(dealer_id)
+);
