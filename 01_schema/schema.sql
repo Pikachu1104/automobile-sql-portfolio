@@ -10,29 +10,26 @@ CREATE TABLE customers (
     pincode VARCHAR(10) NOT NULL,
     created_date DATE NOT NULL,
     updated_date DATE NOT NULL,
-    is_active BOOLEAN
+    is_active char(1)
 );
 
 
 --- Vehicle Table ---
 CREATE TABLE vehicles (
     vehicle_id INT PRIMARY KEY,
-    vin VARCHAR(50) NOT NULL,
-    reg_num VARCHAR(30) NOT NULL,
-    mileage DECIMAL(10,2) NOT NULL,
-    daily_mileage DECIMAL(10,2) NOT NULL,
-    vehicle_model VARCHAR(50) NOT NULL,
-    grade VARCHAR(50) NOT NULL,
-    suffix VARCHAR(50) NOT NULL,
-    interior_color VARCHAR(50) NOT NULL,
-    exterior_color VARCHAR(50) NOT NULL,
-    vehicle_brand VARCHAR(50) NOT NULL,
-    fuel_type VARCHAR(50) NOT NULL,
-    transmission VARCHAR(50) NOT NULL,
+    model_id INT NOT NULL,
+    vin VARCHAR2(50) NOT NULL,
+    reg_num VARCHAR2(30) NOT NULL,
+    mileage NUMBER(10,2) NOT NULL,
+    daily_mileage NUMBER(10,2) NOT NULL,
     created_date DATE NOT NULL,
     updated_date DATE NOT NULL,
-    is_active BOOLEAN
+    is_active CHAR(1),
+    CONSTRAINT fk_vehicles_model
+        FOREIGN KEY (model_id)
+        REFERENCES models_master(model_id)
 );
+
 
 --- Model Master Table ---
 CREATE TABLE models_master (
@@ -47,7 +44,7 @@ CREATE TABLE models_master (
     exterior_color VARCHAR(50) NOT NULL,
     base_price DECIMAL(12,2) NOT NULL,
     launch_date DATE NOT NULL,
-    is_active BOOLEAN
+    is_active char(1)
 );
 
 
