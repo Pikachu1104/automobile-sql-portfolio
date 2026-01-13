@@ -73,3 +73,35 @@ CREATE TABLE branch_master (
         FOREIGN KEY (dealer_id)
         REFERENCES dealer_master(dealer_id)
 );
+
+--- Customer vehicle ---
+CREATE TABLE customer_vehicle (
+    customer_vehicle_id INT PRIMARY KEY,
+    dealer_id INT NOT NULL,
+    branch_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    vehicle_id INT NOT NULL,
+    owner_change CHAR(1),
+    owner_change_date DATE,
+    dnd_activated CHAR(1),
+    created_date DATE NOT NULL,
+    updated_date DATE NOT NULL,
+
+    CONSTRAINT fk_cv_dealer
+        FOREIGN KEY (dealer_id)
+        REFERENCES dealer_master(dealer_id),
+
+    CONSTRAINT fk_cv_branch
+        FOREIGN KEY (branch_id)
+        REFERENCES branch_master(branch_id),
+
+    CONSTRAINT fk_cv_customer
+        FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id),
+
+    CONSTRAINT fk_cv_vehicle
+        FOREIGN KEY (vehicle_id)
+        REFERENCES vehicles(vehicle_id)
+);
+
+
