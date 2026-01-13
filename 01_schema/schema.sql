@@ -13,3 +13,25 @@ CREATE TABLE customers (
     is_active BOOLEAN
 );
 
+
+--- Vehicle Table ---
+CREATE TABLE vehicles (
+    vehicle_id INT PRIMARY KEY,
+    vin VARCHAR(50) NOT NULL,
+    reg_num VARCHAR(30) NOT NULL,
+    mileage DECIMAL(10,2) NOT NULL,
+    daily_mileage DECIMAL(10,2) NOT NULL,
+    vehicle_model VARCHAR(50) NOT NULL,
+    grade VARCHAR(50) NOT NULL,
+    suffix VARCHAR(50) NOT NULL,
+    interior_color VARCHAR(50) NOT NULL,
+    exterior_color VARCHAR(50) NOT NULL,
+    vehicle_brand VARCHAR(50) NOT NULL,
+    fuel_type VARCHAR(50) NOT NULL,
+    transmission VARCHAR(50) NOT NULL,
+    created_date DATE NOT NULL,
+    updated_date DATE NOT NULL,
+    is_active BOOLEAN
+);
+
+
